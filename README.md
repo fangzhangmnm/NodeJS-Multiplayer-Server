@@ -1,21 +1,40 @@
 # NodeJS-Multiplayer-Server
-A versatile nodejs server for broadcasting object transforms between browser-based games
+
+A versatile nodejs server for broadcasting object transforms between browsers.
+
+Clients can create entities and register to the server. Server will broadcast the existing entities to newcoming clients.
+
+Clients can update entity transform to the server. And the server will broadcast it immetiately, or broadcast all entities' transforms in interval.
+
+Room support.
+
+Fundamental ping delay compensation mechanic.
+
+There is no security guarantee. Client can cheat the server because the game logic should be written on client side. Also since it's my first time writing a network program, I guess my code is vulnerable to attack.
+
+Nevertheless, it is a easy-to-use startup kit for your first browser multiplayer game!
+
 
 # usage:
 ## Server
 Edit server.js:
-`var myServer=new Server();
+(```)
+var myServer=new Server();
 myServer.broadcastInterval=0.02;
 myServer.broadcastImmediately=true;
 myServer.pingInterval=2;
 myServer.autoKickTime=2;
 myServer.broadcastInterval=0.02;
 myServer.createRoom("default");
-myServer.start(9999);`
+myServer.start(9999);
+(```)
 Cmd:
-`node server.js`
+(```)
+node server.js
+(```)
 ## Client
-`var client=require('./client')
+(```)
+var client=require('./client')
 
 //var myClient=new client.ClientSide("ws://localhost:9999");
 var myClient=new client.ClientSide("ws://fangzhangmnm.xyz:9999");
@@ -39,4 +58,5 @@ myClient.onRoomReady(()=>{
             console.log(e1.p.x);
         }
     },1000);
-});`
+});
+(```)
