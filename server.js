@@ -292,7 +292,7 @@ class Server{
                     client.waitForPing=false;
                     client.doubleDelayMS=grossTimeMS-info.t0;
                     client.connection.emit("ping3",{t0:info.t0,t1:info.t1,t2:grossTimeMS});
-                    console.log(`Ping client ${client.id}: ${client.doubleDelayMS} ms`);
+                    //console.log(`Ping client ${client.id}: ${client.doubleDelayMS} ms`);
                 });
             });
         });
