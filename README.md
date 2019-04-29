@@ -18,7 +18,7 @@ Nevertheless, it is a easy-to-use startup kit for your first browser multiplayer
 # usage:
 ## Server
 Edit server.js:
-(```)
+```
 var myServer=new Server();
 myServer.broadcastInterval=0.02;
 myServer.broadcastImmediately=true;
@@ -27,13 +27,13 @@ myServer.autoKickTime=2;
 myServer.broadcastInterval=0.02;
 myServer.createRoom("default");
 myServer.start(9999);
-(```)
+```
 Cmd:
-(```)
+```
 node server.js
-(```)
+```
 ## Client
-(```)
+```
 var client=require('./client')
 
 //var myClient=new client.ClientSide("ws://localhost:9999");
@@ -59,4 +59,4 @@ myClient.onRoomReady(()=>{
         }
     },1000);
 });
-(```)
+```
