@@ -1,6 +1,6 @@
 # NodeJS-Multiplayer-Server
 
-A versatile nodejs server for broadcasting object transforms between browsers.
+A versatile nodejs server for broadcasting object transforms between browsers based on socket.io.
 
 Clients can create entities and register to the server. Server will broadcast the existing entities to newcoming clients.
 
@@ -17,6 +17,14 @@ Nevertheless, it is a easy-to-use startup kit for your first browser multiplayer
 
 # usage:
 ## Server
+
+Installation Dependencies:
+```
+npm install engine.io
+npm install socket.io
+```
+Configuration:
+
 Edit server.js:
 ```
 var myServer=new Server();
@@ -28,7 +36,7 @@ myServer.broadcastInterval=0.02;
 myServer.createRoom("default");
 myServer.start(9999);
 ```
-Cmd:
+Run:
 ```
 node server.js
 ```
@@ -36,8 +44,7 @@ node server.js
 ```
 var client=require('./client')
 
-//var myClient=new client.ClientSide("ws://localhost:9999");
-var myClient=new client.ClientSide("ws://fangzhangmnm.xyz:9999");
+var myClient=new client.ClientSide("ws://localhost:9999");
 myClient.onConnection(()=>{
     myClient.joinRoom("default");
     myClient.socket.emit("int",233);
@@ -46,7 +53,6 @@ var handle=myClient.createEntityNow({x:0,y:0,z:0},{x:0,y:0,z:0,w:1},{name:"entit
 myClient.onRoomReady(()=>{
     var handle1=myClient.createEntityNow({x:0,y:0,z:0},{x:0,y:0,z:0,w:1},{name:"entity2"});
     setInterval(()=>{
-        //console.log(myClient.getRoomTime(),handle,myClient.getEntity(handle))
         myClient.getEntity(handle).p.x=Math.cos(myClient.getRoomTime());
         myClient.uploadEntityDynamics();
         myClient.uploadRemoveFlags();
