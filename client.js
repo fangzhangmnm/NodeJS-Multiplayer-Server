@@ -46,9 +46,7 @@ class ClientSide{
             var biasMS=t3-(info.t2+client.doubleDelayMS/2);//local-server
             client.localToServerTimeBiasMS=client.localToServerTimeBiasMS*(1-1/client.timeBiasAvgWindow)+biasMS*1/client.timeBiasAvgWindow;
             
-            //console.log("localToServerTimeBiasMS",client.localToServerTimeBiasMS)
-            //console.log(client.biases);
-            console.log(`server ping: ${client.doubleDelayMS} ms clientBias ${client.localToServerTimeBiasMS}`);
+            //console.log(`server ping: ${client.doubleDelayMS} ms clientBias ${client.localToServerTimeBiasMS}`);
         });
         this.socket.on("connect",()=>{
             console.log("hello")
